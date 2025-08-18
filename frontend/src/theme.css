@@ -1,0 +1,84 @@
+:root {
+  /* Blue-centric palette */
+  --primary: #1f6feb; /* GitHub blue */
+  --primary-700: #1e60c2;
+  --primary-800: #184a96;
+  --primary-900: #12376f;
+  --accent-start: #12376f; /* deep blue */
+  --accent-end: #1f6feb;   /* bright blue */
+  --bg: #f5f7fb;
+  --text: #0f172a;
+  --muted: #64748b;
+  --card: #ffffff;
+  --shadow: 0 8px 24px rgba(16, 24, 40, 0.06);
+}
+
+* { box-sizing: border-box }
+html, body { height: 100% }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Microsoft YaHei", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+a { color: var(--primary); text-decoration: none }
+a:hover { text-decoration: underline }
+
+/* Header (navbar-like) */
+.header {
+  background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+  color: #fff;
+  padding: 12px 20px;
+}
+.header .brand {
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  font-size: 18px;
+}
+.header .nav a { color: #fff; opacity: 0.95; }
+.header .nav a:hover { opacity: 1; text-decoration: none; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 20px }
+
+/* Cards & panels */
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+.card-header {
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-weight: 600;
+}
+.card-header.primary { background: var(--primary); color: #fff; }
+.card-header.success { background: #1b5e20; color: #fff; }
+.card-header.info { background: #0ea5e9; color: #fff; }
+.card-header.warning { background: #f59e0b; color: #fff; }
+
+/* Buttons */
+.btn { background: var(--primary); color: #fff; border: none; border-radius: 10px; padding: 10px 16px; cursor: pointer; font-weight: 600; }
+.btn:hover { filter: brightness(0.95); }
+.btn.secondary { background: #16a34a; }
+.btn.ghost { background: transparent; color: var(--primary); border: 1px solid var(--primary); }
+
+/* Inputs */
+.input { width: 100%; padding: 10px 12px; border: 1px solid #e2e8f0; border-radius: 10px; margin: 6px 0 12px 0; }
+
+/* Grid */
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+
+/* Badges */
+.badge { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.badge-qed { position: absolute; top: 8px; left: 8px; }
+.badge-success { background: #d1fae5; color: #065f46; }
+.badge-warning { background: #fef3c7; color: #92400e; }
+.badge-danger { background: #fee2e2; color: #991b1b; }
+
+/* Molecule image */
+.mol-img { width: 100%; height: auto; border-radius: 10px; }
+
+/* Footer */
+.footer { text-align: center; color: var(--muted); padding: 24px; }
