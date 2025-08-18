@@ -1,0 +1,22 @@
+{
+  "name": "DainMedic Dev",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "postCreateCommand": "docker compose up -d --build",
+  "forwardPorts": [8000, 4173],
+  "portsAttributes": {
+    "8000": { "label": "FastAPI backend" },
+    "4173": { "label": "Vite preview" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}
