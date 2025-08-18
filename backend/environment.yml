@@ -1,0 +1,17 @@
+name: dainmedic
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - fastapi
+  - uvicorn
+  - rdkit
+  - numpy
+  - pandas
+  - pydantic
+  - python-multipart
+  - requests
+  - jinja2
+  - aiofiles

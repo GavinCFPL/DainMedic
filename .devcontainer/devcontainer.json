@@ -1,0 +1,29 @@
+{
+  "name": "DainMedic Development Container",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "postCreateCommand": "docker compose up -d --build",
+  "forwardPorts": [8000, 4173],
+  "portsAttributes": {
+    "8000": {
+      "label": "Backend API",
+      "protocol": "http"
+    },
+    "4173": {
+      "label": "Frontend",
+      "protocol": "http"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next"
+      ]
+    }
+  }
+}
