@@ -2,23 +2,25 @@
 # This file indicates the backend directory structure exists
 # The actual FastAPI application will be implemented separately
 
-FROM mambaorg/micromamba:1.5-focal
+FROM python:3.10-slim
 
 # Set working directory
 WORKDIR /app
 
-# Copy environment file
-COPY environment.yml ./
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
 
-# Create conda environment
-RUN micromamba install -y -n base -f environment.yml && \
-    micromamba clean --all --yes
+# Copy requirements file
+COPY requirements.txt ./
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY . .
-
-# Activate environment and set path
-ENV PATH /opt/conda/envs/dainmedic/bin:$PATH
 
 # Expose port
 EXPOSE 8000
