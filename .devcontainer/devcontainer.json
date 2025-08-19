@@ -1,29 +1,33 @@
 {
-  "name": "DainMedic Development Container",
+  "name": "DainMedic Development Container (Micromamba)",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  },
-  "postCreateCommand": "docker compose up -d --build",
-  "forwardPorts": [8000, 4173],
+  "postCreateCommand": ".devcontainer/scripts/devcontainer-setup.sh",
+  "forwardPorts": [8000],
   "portsAttributes": {
     "8000": {
       "label": "Backend API",
-      "protocol": "http"
-    },
-    "4173": {
-      "label": "Frontend",
-      "protocol": "http"
+      "protocol": "http",
+      "onAutoForward": "openBrowser"
     }
+  },
+  "remoteEnv": {
+    "DATABASE_URL": "sqlite:////workspaces/DainMedic/.data/dainmedic.sqlite",
+    "SECRET_KEY": "dev-secret-key-change-in-production",
+    "PATH": "/opt/micromamba/bin:${containerEnv:PATH}"
   },
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
+        "ms-python.debugpy",
         "bradlc.vscode-tailwindcss",
         "esbenp.prettier-vscode",
         "ms-vscode.vscode-typescript-next"
-      ]
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/opt/micromamba/envs/dainmedic/bin/python",
+        "python.terminal.activateEnvironment": true
+      }
     }
   }
 }
